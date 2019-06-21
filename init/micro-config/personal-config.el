@@ -126,7 +126,7 @@ occurence of CHAR."
   (message "pomodoro time enabled")
   (org-clock-in)
  ;; (run-at-time "25 min" nil
-  (run-at-time "0" nil
+  (run-at-time "30" nil
                (lambda ()
                  (progn
                    (org-clock-out) 
