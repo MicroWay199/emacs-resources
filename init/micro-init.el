@@ -78,6 +78,9 @@
 (add-hook 'org-mode-hook 
           (load (concat micro-config-path "org-config")))
 
+(add-hook 'org-mode-hook 
+          (load (concat micro-config-path "deft-config")))
+
 (require 'personal-config)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
