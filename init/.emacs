@@ -11,9 +11,6 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(cua-mode t nil (cua-base))
- '(current-language-environment "Chinese-GBK")
- '(custom-enabled-themes (quote (molokai)))
  '(display-time-mode t)
  '(line-number-mode t)
  '(show-paren-mode t)
@@ -29,5 +26,5 @@
           (lambda ()
              (add-to-list 'load-path "~/github/svn/emacs-resources/trunk/init/")
              (require 'micro-init))))
-    
+
 

@@ -3,6 +3,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq micro-org-capture-path 
       "C:\\Users\\Administrator\\Desktop\\org-gtd\\")
+(defun micro-org-capture-dir-set()
+  (if (eq system-type `windows-nt)
+      (setq micro-org-capture-path 
+        "C:\\Users\\Administrator\\Desktop\\org-gtd\\")
+      (setq micro-org-capture-path 
+        "~/note-gtd-ebook/org-gtd/")))
+(micro-org-capture-dir-set)
 
 (defun open-todo-list()
   """open todo file and agenda mode"""

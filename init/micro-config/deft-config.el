@@ -10,8 +10,14 @@
 ;;(global-set-key (kbd "C-x C-f") 'helm-find-files)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;install ivy
-(add-to-list 'load-path 
-	     (concat micro-plugin-path "deft\\"))
+(defun micro-deft-dir-set()
+  (if (eq system-type `windows-nt)
+      (add-to-list 'load-path 
+              (concat micro-plugin-path "deft\\"))
+      (add-to-list 'load-path 
+              (concat micro-plugin-path "deft/"))))
+(micro-deft-dir-set)
+
 (require 'deft)
 
 (setq deft-extensions '("md" "txt" "tex" "org"))

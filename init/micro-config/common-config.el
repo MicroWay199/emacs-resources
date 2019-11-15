@@ -62,9 +62,14 @@
 ;;以下两种方式都可以良好的使用
 (set-default buffer-file-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-(set-frame-font "Consolas-12")
-(set-fontset-font "fontset-default"  
-                  'gb18030' ("楷体" . "unicode-bmp"))
+;; (defun micro-set-font()
+;;   (if (eq system-type `windows-nt)
+;;       (set-frame-font "Consolas-12")
+;;       (set-frame-font "UbuntuMonoRegular-12")))
+;; (micro-set-font)
+
+;;(set-fontset-font "fontset-default"  
+;;                  'gb18030' ("楷体" . "unicode-bmp"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;设置显示括号匹配

@@ -1,7 +1,14 @@
 ;;;; auto complete configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path 
+(defun micro-auto-complete-dir-set()
+  (if (eq system-type `windows-nt)
+      (add-to-list 'load-path 
          (concat micro-plugin-path "auto-complete\\"))
+      (add-to-list 'load-path 
+         (concat micro-plugin-path "auto-complete/"))))
+(micro-auto-complete-dir-set)
+
+
 (require 'auto-complete)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories 

@@ -19,9 +19,16 @@
 ;;如果需要像上面一样，采用相对智能的 {} 方式，可以设置成
 ;;:sub-superscript {}
 ;;或是直接用 elisp 来设置全局的属性：
-(add-to-list 'load-path 
-	     (concat micro-config-path "emacs-htmlize\\"))
-(require 'htmlize)
+
+(defun micro-htmlize-dir-set()
+  (if (eq system-type `windows-nt)
+      (add-to-list 'load-path 
+              (concat micro-plugin-path "emacs-htmlize\\"))
+      (add-to-list 'load-path 
+              (concat micro-plugin-path "emacs-htmlize/"))))
+(micro-htmlize-dir-set)
+
+;;(require 'htmlize)
 
 (require 'ox-freemind)
 (setq org-export-with-sub-superscripts '{}) ;;这样就会用 {} 来转义了。
@@ -69,10 +76,6 @@
         ("ONGO>>>" . "yellow")
         ("DONE---" . "green")
         ("ABORT--" . "gray")))
-;;emacs-htmlize for html export
-(add-to-list 'load-path 
-             "C:\\emacs\\init\\micro-config\\emacs-htmlize")
-(require 'htmlize)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;add for org-mode 快速插入图片

@@ -3,8 +3,14 @@
 ; C-o按键调用vim功能（就是临时进入normal模式，然后自动回来） 
 ; C-o 3dd C-o dib C-o yy C-o p C-o f 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path 
+(defun micro-evil-dir-set()
+  (if (eq system-type `windows-nt)
+      (add-to-list 'load-path 
               (concat micro-plugin-path "Evil\\"))
+      (add-to-list 'load-path 
+              (concat micro-plugin-path "Evil/"))))
+(micro-evil-dir-set)
+
 (require 'evil)
 ;;默认不启动evil，手动启动
 (evil-mode t)

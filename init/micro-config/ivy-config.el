@@ -10,8 +10,14 @@
 ;;(global-set-key (kbd "C-x C-f") 'helm-find-files)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;install ivy
-(add-to-list 'load-path 
-	     (concat micro-plugin-path "ivy\\"))
+(defun micro-ivy-dir-set()
+  (if (eq system-type `windows-nt)
+      (add-to-list 'load-path 
+              (concat micro-plugin-path "ivy\\"))
+      (add-to-list 'load-path 
+              (concat micro-plugin-path "ivy/"))))
+(micro-ivy-dir-set)
+
 (require 'counsel)
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)

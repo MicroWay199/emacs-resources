@@ -1,53 +1,32 @@
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
- '(column-number-mode t)
- '(cua-mode t nil (cua-base))
- '(current-language-environment "Chinese-GBK")
- ;;'(custom-enabled-themes (quote (molokai)))
- '(display-time-mode t)
- '(line-number-mode t)
- '(show-paren-mode t)
- '(size-indication-mode t)
- '(tool-bar-mode nil))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 自定义插件配置 ;;设置插件路径
-(if (eq system-type `windows-nt)
-    (progn
-        (setq micro-plugin-path 
-	     "C:\\tools\\emacs\\init\\plugin\\")
+;;; if windows 
+;;; (defvar micro-plugin-path 
+;;;      "C:\\tools\\emacs\\init\\plugin\\")
+;;; 
+;;; (defvar micro-config-path 
+;;;      "C:\\tools\\emacs\\init\\micro-config\\")
+;;; (add-to-list 'load-path micro-config-path)
+;;; 
+;;; (defvar micro-run-path 
+;;;      "C:\\tools\\emacs\\init\\run-command\\")
+;;; 
+;;; (defvar micro-theme-path 
+;;;      "C:\\tools\\emacs\\init\\themes\\")
 
-        (setq micro-config-path 
-	     "C:\\tools\\emacs\\init\\micro-config\\")
-        (add-to-list 'load-path micro-config-path)
+(defvar micro-plugin-path 
+     "~/github/svn/emacs-resources/trunk/init/plugin/")
 
-        (setq micro-run-path 
-	     "C:\\tools\\emacs\\init\\run-command\\")
+(defvar micro-config-path 
+     "~/github/svn/emacs-resources/trunk/init/micro-config/")
+(add-to-list 'load-path micro-config-path)
 
-        (setq micro-theme-path 
-	     "C:\\tools\\emacs\\init\\themes\\"))
-    (progn
-        (setq micro-plugin-path 
-	     "~/github/svn/emacs-resources/trunk/init/plugin/")
+(defvar micro-run-path 
+     "~/github/svn/emacs-resources/trunk/init/run-command/")
 
-        (setq micro-config-path 
-	     "~/github/svn/emacs-resources/trunk/init/micro-config/")
-        (add-to-list 'load-path micro-config-path)
-
-        (setq micro-run-path 
-	     "~/github/svn/emacs-resources/trunk/init/run-command/")
-
-        (setq micro-theme-path 
-	     "~/github/svn/emacs-resources/trunk/init/themes/"))
+(defvar micro-theme-path 
+     "~/github/svn/emacs-resources/trunk/init/themes/")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;common settiong
@@ -100,10 +79,10 @@
 (require 'personal-config)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;auto run conmand ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;auto run command ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'perl-mode (load (concat micro-run-path "run-perl")))
 (add-hook 'python-mode (load (concat micro-run-path "run-python")))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;myconfigfunc ends here
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;my config func ends here
 (provide 'micro-init)
