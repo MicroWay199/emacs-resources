@@ -21,18 +21,34 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 自定义插件配置 ;;设置插件路径
-(setq micro-plugin-path 
+(if (eq system-type `windows-nt)
+    (progn
+        (setq micro-plugin-path 
 	     "C:\\tools\\emacs\\init\\plugin\\")
 
-(setq micro-config-path 
+        (setq micro-config-path 
 	     "C:\\tools\\emacs\\init\\micro-config\\")
-(add-to-list 'load-path micro-config-path)
+        (add-to-list 'load-path micro-config-path)
 
-(setq micro-run-path 
+        (setq micro-run-path 
 	     "C:\\tools\\emacs\\init\\run-command\\")
 
-(setq micro-theme-path 
-	     "C:\\tools\\emacs\\init\\themes\\")
+        (setq micro-theme-path 
+	     "C:\\tools\\emacs\\init\\themes\\"))
+    (progn
+        (setq micro-plugin-path 
+	     "~/github/svn/emacs-resources/trunk/init/plugin/")
+
+        (setq micro-config-path 
+	     "~/github/svn/emacs-resources/trunk/init/micro-config/")
+        (add-to-list 'load-path micro-config-path)
+
+        (setq micro-run-path 
+	     "~/github/svn/emacs-resources/trunk/init/run-command/")
+
+        (setq micro-theme-path 
+	     "~/github/svn/emacs-resources/trunk/init/themes/"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;common settiong
 ;;evil 

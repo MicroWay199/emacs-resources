@@ -20,8 +20,14 @@
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 
-(add-hook 'after-init-hook 
+(if (eq system-type `windows-nt)
+    (add-hook 'after-init-hook 
           (lambda ()
              (add-to-list 'load-path "C:\\tools\\emacs\\init\\")
              (require 'micro-init)))
+    (add-hook 'after-init-hook 
+          (lambda ()
+             (add-to-list 'load-path "~/github/svn/emacs-resources/trunk/init/")
+             (require 'micro-init))))
+    
 
