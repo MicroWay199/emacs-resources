@@ -53,7 +53,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;…Ë÷√÷˜Ã‚
 (add-to-list 'custom-theme-load-path 
-             "C:\\tools\\emacs\\init\\themes")
+             micro-theme-path)
 ;;(load-theme 'solarized-[light|dark] t))
 (load-theme 'molokai t)
 
