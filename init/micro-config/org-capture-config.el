@@ -1,8 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;org-mode capture function config here
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq micro-org-capture-path 
-      "C:\\Users\\Administrator\\Desktop\\org-gtd\\")
 (defun micro-org-capture-dir-set()
   (if (eq system-type `windows-nt)
       (setq micro-org-capture-path 

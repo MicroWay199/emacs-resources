@@ -6,7 +6,7 @@
       (add-to-list 'load-path 
               (concat micro-plugin-path "yasnippet\\"))
       (add-to-list 'load-path 
-              (concat micro-plugin-path "yasnippet"))))
+              (concat micro-plugin-path "yasnippet/"))))
 
 (micro-yasnippet-dir-set)
 (require 'yasnippet)

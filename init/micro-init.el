@@ -1,32 +1,36 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 自定义插件配置 ;;设置插件路径
-;;; if windows 
-;;; (defvar micro-plugin-path 
-;;;      "C:\\tools\\emacs\\init\\plugin\\")
-;;; 
-;;; (defvar micro-config-path 
-;;;      "C:\\tools\\emacs\\init\\micro-config\\")
-;;; (add-to-list 'load-path micro-config-path)
-;;; 
-;;; (defvar micro-run-path 
-;;;      "C:\\tools\\emacs\\init\\run-command\\")
-;;; 
-;;; (defvar micro-theme-path 
-;;;      "C:\\tools\\emacs\\init\\themes\\")
+(defun micro-system-chk()
+  (if (eq system-type `windows-nt)
+    (progn ;;; if windows 
+       (defvar micro-plugin-path 
+            "C:\\tools\\emacs\\init\\plugin\\")
+       
+       (defvar micro-config-path 
+            "C:\\tools\\emacs\\init\\micro-config\\")
+       (add-to-list 'load-path micro-config-path)
+       
+       (defvar micro-run-path 
+            "C:\\tools\\emacs\\init\\run-command\\")
+       
+       (defvar micro-theme-path 
+            "C:\\tools\\emacs\\init\\themes\\"))
+    (progn 
+        (defvar micro-plugin-path 
+             "~/github/svn/emacs-resources/trunk/init/plugin/")
+        
+        (defvar micro-config-path 
+             "~/github/svn/emacs-resources/trunk/init/micro-config/")
+        (add-to-list 'load-path micro-config-path)
+        
+        (defvar micro-run-path 
+             "~/github/svn/emacs-resources/trunk/init/run-command/")
+        
+        (defvar micro-theme-path 
+             "~/github/svn/emacs-resources/trunk/init/themes/"))))
 
-(defvar micro-plugin-path 
-     "~/github/svn/emacs-resources/trunk/init/plugin/")
-
-(defvar micro-config-path 
-     "~/github/svn/emacs-resources/trunk/init/micro-config/")
-(add-to-list 'load-path micro-config-path)
-
-(defvar micro-run-path 
-     "~/github/svn/emacs-resources/trunk/init/run-command/")
-
-(defvar micro-theme-path 
-     "~/github/svn/emacs-resources/trunk/init/themes/")
+(micro-system-chk)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;common settiong
