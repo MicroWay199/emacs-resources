@@ -61,6 +61,9 @@
           (load (concat micro-config-path "sr-speedbar-config")))
 
 (add-hook 'emacs-startup-hook 
+          (load (concat micro-config-path "ranger-config")))
+
+(add-hook 'emacs-startup-hook 
           (load (concat micro-config-path "org-capture-config")))
 
 (eval-after-load 'c-mode 
