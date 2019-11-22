@@ -4,31 +4,25 @@
 (defun micro-system-chk()
   (if (eq system-type `windows-nt)
     (progn ;;; if windows 
-       (defvar micro-plugin-path 
-            "C:\\tools\\emacs\\init\\plugin\\")
+       (defvar micro-config-root-path "C:\\tools\\emacs\\init\\")
+
+       (setq micro-plugin-path (concat micro-config-root-path "plugin\\"))
        
-       (defvar micro-config-path 
-            "C:\\tools\\emacs\\init\\micro-config\\")
-       (add-to-list 'load-path micro-config-path)
+       (setq micro-config-path (concat micfo-config-root-path "micro-config\\"))
        
-       (defvar micro-run-path 
-            "C:\\tools\\emacs\\init\\run-command\\")
+       (setq micro-run-path (concat micro-config-root-path "run-command\\"))
        
-       (defvar micro-theme-path 
-            "C:\\tools\\emacs\\init\\themes\\"))
+       (setq micro-theme-path (concat micro-config-root-path "themes\\")))
     (progn 
-        (defvar micro-plugin-path 
-             "~/github/svn/emacs-resources/trunk/init/plugin/")
+        (defvar micro-config-root-path  "~/github/svn/emacs-resources/trunk/init/")
+
+        (setq micro-plugin-path (concat micro-config-root-path "plugin/"))
         
-        (defvar micro-config-path 
-             "~/github/svn/emacs-resources/trunk/init/micro-config/")
-        (add-to-list 'load-path micro-config-path)
+        (defvar micro-config-path (concat micro-config-root-path "micro-config/"))
+
+        (defvar micro-run-path (concat micro-config-root-path "run-command/"))
         
-        (defvar micro-run-path 
-             "~/github/svn/emacs-resources/trunk/init/run-command/")
-        
-        (defvar micro-theme-path 
-             "~/github/svn/emacs-resources/trunk/init/themes/"))))
+        (defvar micro-theme-path (concat micro-config-root-path "themes/")))))
 
 (micro-system-chk)
 
@@ -44,6 +38,8 @@
 ;;org-mode config
 ;;personal config
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-to-list 'load-path micro-config-path)
 
 (add-hook 'emacs-startup-hook 
           (load (concat micro-config-path "common-config")))
@@ -61,9 +57,6 @@
           (load (concat micro-config-path "sr-speedbar-config")))
 
 (add-hook 'emacs-startup-hook 
-          (load (concat micro-config-path "ranger-config")))
-
-(add-hook 'emacs-startup-hook 
           (load (concat micro-config-path "org-capture-config")))
 
 (eval-after-load 'c-mode 
@@ -77,11 +70,18 @@
                  '(load (concat micro-config-path "yasnippet-config")))
 
 (add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
-(add-hook 'org-mode-hook 
-          (load (concat micro-config-path "org-config")))
 
-(add-hook 'org-mode-hook 
+(eval-after-load 'org-mode
+           (load (concat micro-config-path "org-config")))
+
+(eval-after-load 'org-mode
           (load (concat micro-config-path "deft-config")))
+
+;; (add-hook 'org-mode-hook 
+;;           (load (concat micro-config-path "org-config")))
+
+;;(add-hook 'org-mode-hook 
+;;          (load (concat micro-config-path "deft-config")))
 
 (require 'personal-config)
 
