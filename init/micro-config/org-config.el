@@ -2,23 +2,23 @@
 ;;org-mode setting
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;Org Mode Àï£¬Ä¬ÈÏÇé¿öÏÂ _ ÕâÖÖ×Ö·û»á±»µ±³É±ê¼ÇÓïÑÔÀ´½øĞĞ×ªÒå¡£
-;;ÈçºÎÉèÖÃÈÃ Org Mode ÔÚÄ¬ÈÏÇé¿öÏÂ£¬²»×ªÒå _ ×Ö·ûÄØ£¿
-;;µ¥¸ö org ÎÄ¼şµÄ½â¾ö°ì·¨
-;;Äã¿ÉÒÔÔÚÒ»¸ö org ÎÄ¼şµÄ¿ªÍ·£¬ÓÃÏÂÃæµÄÉèÖÃÀ´¹Ø±ÕÕâ¸ö¹¦ÄÜ¡£
+;;Org Mode é‡Œï¼Œé»˜è®¤æƒ…å†µä¸‹ _ è¿™ç§å­—ç¬¦ä¼šè¢«å½“æˆæ ‡è®°è¯­è¨€æ¥è¿›è¡Œè½¬ä¹‰ã€‚
+;;å¦‚ä½•è®¾ç½®è®© Org Mode åœ¨é»˜è®¤æƒ…å†µä¸‹ï¼Œä¸è½¬ä¹‰ _ å­—ç¬¦å‘¢ï¼Ÿ
+;;å•ä¸ª org æ–‡ä»¶çš„è§£å†³åŠæ³•
+;;ä½ å¯ä»¥åœ¨ä¸€ä¸ª org æ–‡ä»¶çš„å¼€å¤´ï¼Œç”¨ä¸‹é¢çš„è®¾ç½®æ¥å…³é—­è¿™ä¸ªåŠŸèƒ½ã€‚
 ;;#+OPTIONS: ^:nil
-;;Èç¹ûÄãĞèÒª¸ü·½±ãµÄÉèÖÃ£¬¿ÉÒÔ°ÑÉÏÃæÕâ¸ö¸ÄÎª
+;;å¦‚æœä½ éœ€è¦æ›´æ–¹ä¾¿çš„è®¾ç½®ï¼Œå¯ä»¥æŠŠä¸Šé¢è¿™ä¸ªæ”¹ä¸º
 ;;#+OPTIONS: ^:{}
-;;ÕâÑù£¬µ±Ğ´ a_{b} Ê±£¬_ºó±» {} À¨ÆğÀ´µÄÄÚÈİ¾Í»á±»×ªÒå£¬¶øĞ´ a_b Ê±£¬¾Í°´ÆÕÍ¨µÄ·½Ê½À´ÏÔÊ¾¡£
+;;è¿™æ ·ï¼Œå½“å†™ a_{b} æ—¶ï¼Œ_åè¢« {} æ‹¬èµ·æ¥çš„å†…å®¹å°±ä¼šè¢«è½¬ä¹‰ï¼Œè€Œå†™ a_b æ—¶ï¼Œå°±æŒ‰æ™®é€šçš„æ–¹å¼æ¥æ˜¾ç¤ºã€‚
 
-;;org sites µÄ½â¾ö°ì·¨
-;;Èç¹ûÄãÊÇÓÃ org sites À´Ğ´±Ê¼Ç£¬ÏëÈÃÄ³¸ö site µÄËùÓĞ org ÎÄ¼ş²»×ªÒå _ ×Ö·û£¬ÔòÒ²¿ÉÒÔÖ±½ÓÔÚ org sites ÅäÖÃÎÄ¼şÀï£¬ÅäÖÃÏÂÃæÕâÃ´Ò»¾ä£¬Ò»ÁË°ÙÁË£º
+;;org sites çš„è§£å†³åŠæ³•
+;;å¦‚æœä½ æ˜¯ç”¨ org sites æ¥å†™ç¬”è®°ï¼Œæƒ³è®©æŸä¸ª site çš„æ‰€æœ‰ org æ–‡ä»¶ä¸è½¬ä¹‰ _ å­—ç¬¦ï¼Œåˆ™ä¹Ÿå¯ä»¥ç›´æ¥åœ¨ org sites é…ç½®æ–‡ä»¶é‡Œï¼Œé…ç½®ä¸‹é¢è¿™ä¹ˆä¸€å¥ï¼Œä¸€äº†ç™¾äº†ï¼š
 ;;(setq org-export-with-sub-superscripts nil)
-;;Ò²¿ÉÒÔÔÚ org sites ÀïÉèÖÃÕâ¸öÊôĞÔ£¬Ö»×÷ÓÃÓÚÄ³Ò»¸ö site£º
+;;ä¹Ÿå¯ä»¥åœ¨ org sites é‡Œè®¾ç½®è¿™ä¸ªå±æ€§ï¼Œåªä½œç”¨äºæŸä¸€ä¸ª siteï¼š
 ;;    :sub-superscript nil
-;;Èç¹ûĞèÒªÏñÉÏÃæÒ»Ñù£¬²ÉÓÃÏà¶ÔÖÇÄÜµÄ {} ·½Ê½£¬¿ÉÒÔÉèÖÃ³É
+;;å¦‚æœéœ€è¦åƒä¸Šé¢ä¸€æ ·ï¼Œé‡‡ç”¨ç›¸å¯¹æ™ºèƒ½çš„ {} æ–¹å¼ï¼Œå¯ä»¥è®¾ç½®æˆ
 ;;:sub-superscript {}
-;;»òÊÇÖ±½ÓÓÃ elisp À´ÉèÖÃÈ«¾ÖµÄÊôĞÔ£º
+;;æˆ–æ˜¯ç›´æ¥ç”¨ elisp æ¥è®¾ç½®å…¨å±€çš„å±æ€§ï¼š
 
 (defun micro-htmlize-dir-set()
   (if (eq system-type `windows-nt)
@@ -31,8 +31,8 @@
 ;;(require 'htmlize)
 
 (require 'ox-freemind)
-(setq org-export-with-sub-superscripts '{}) ;;ÕâÑù¾Í»áÓÃ {} À´×ªÒåÁË¡£
-;;org-mode Êä³ö±í¸ñµÄÊ±ºòÏÔÊ¾È«²¿¿òÏß
+(setq org-export-with-sub-superscripts '{}) ;;è¿™æ ·å°±ä¼šç”¨ {} æ¥è½¬ä¹‰äº†ã€‚
+;;org-mode è¾“å‡ºè¡¨æ ¼çš„æ—¶å€™æ˜¾ç¤ºå…¨éƒ¨æ¡†çº¿
 (setq org-html-table-default-attributes
       '(:border "2"
         :cellspacing "0"
@@ -41,30 +41,30 @@
         :frame "border"))
 
 (setq org-startup-indented t)
-;;Ö´ĞĞemacs org-modeÖĞµÄ´úÂëC-c C-c
+;;æ‰§è¡Œemacs org-modeä¸­çš„ä»£ç C-c C-c
 (org-babel-do-load-languages 'org-babel-load-languages
      '(;;can also add other langue here
            (emacs-lisp . t)
            (python . t)
-           (dot . t)  ;;graphiz »­Í¼ add xxx/griphviz/bin to »·¾³PATH
+           (dot . t)  ;;graphiz ç”»å›¾ add xxx/griphviz/bin to ç¯å¢ƒPATH
            (org . t)
            (latex . t)))
 
 (setq default-fill-column 80)
 (auto-fill-mode t)
-;;Èç¹ûÒªÌí¼Ó£¬¾ÍÔÚsequenceÖĞÌí¼Ó£¬»òÕßÌí¼Ósequence
-;;Èç¹ûÌí¼Ó¸ĞÌ¾ºÅ!£¬Ôò»á×Ô¶¯Ìí¼ÓÊ±¼ä´Á£¬@/ÒâË¼ÊÇ²»Ñ­»·ÇĞ»» ,
-;;;Èç¹ûÃ»ÓĞ"|"Ôò×îºóÒ»Ïî±íÊ¾Íê³É,Èç¹ûÓĞ"|"£¬Ôò"|"ºóÃæµÄÏî±íÊ¾Íê³É
+;;å¦‚æœè¦æ·»åŠ ï¼Œå°±åœ¨sequenceä¸­æ·»åŠ ï¼Œæˆ–è€…æ·»åŠ sequence
+;;å¦‚æœæ·»åŠ æ„Ÿå¹å·!ï¼Œåˆ™ä¼šè‡ªåŠ¨æ·»åŠ æ—¶é—´æˆ³ï¼Œ@/æ„æ€æ˜¯ä¸å¾ªç¯åˆ‡æ¢ ,
+;;;å¦‚æœæ²¡æœ‰"|"åˆ™æœ€åä¸€é¡¹è¡¨ç¤ºå®Œæˆ,å¦‚æœæœ‰"|"ï¼Œåˆ™"|"åé¢çš„é¡¹è¡¨ç¤ºå®Œæˆ
 ;;;(setq org-todo-keywords
-;;;  '((type "¹¤×÷(w!)" "Ñ§Ï°(s!)" "ĞİÏĞ(l!)" "|")
+;;;  '((type "å·¥ä½œ(w!)" "å­¦ä¹ (s!)" "ä¼‘é—²(l!)" "|")
 ;;;    (sequence "PENDING(p!)" "TODO(t!)"  "|" "DONE(d!)" "ABORT(a@/!)")))
 ;;;(setq org-todo-keywords 
 ;;;  '((sequence "TODO(t)" "STARTING(s)" "|" "DONE(d)")
 ;;;    (sequence "|" "CONCELED(c)")))
-(setq org-log-done 'time) ;;¼ÇÂ¼doneµÄÊ±¼ä
+(setq org-log-done 'time) ;;è®°å½•doneçš„æ—¶é—´
 (setq org-todo-keywords
-  '((type "¹¤×÷---(w!)" "Ñ§Ï°---(s!)" "ĞİÏĞ---(l!)" "|")
-    (sequence "TODO===(t!)" "ONGO>>>(o!)" "|" "DONE---(d!)" "ABORT--(a!)")))
+  '((type "å·¥ä½œ---(w!)" "å­¦ä¹ ---(s!)" "ä¼‘é—²---(l!)" "|")
+    (sequence "TODO===(t!)" "IMDO===" "ONGO>>>(o!)" "|" "DONE---(d!)" "ABORT--(a!)")))
 ;; (setq org-todo-keyword-faces 
 ;;       '(("TODO===" :foreground "red")
 ;;         ("ONGO>>>" :foreground "yellow")
@@ -72,18 +72,19 @@
 ;;         ("ABORT--" :foreground "gray")))
 
 (setq org-todo-keyword-faces 
-      '(("TODO===" . "red")
+      '(("TODO===" . "orange")
+        ("IMDO===" . "red")
         ("ONGO>>>" . "yellow")
         ("DONE---" . "green")
         ("ABORT--" . "gray")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;add for org-mode ¿ìËÙ²åÈëÍ¼Æ¬
+;;;add for org-mode å¿«é€Ÿæ’å…¥å›¾ç‰‡
 (defun micro-org-insert-picture ()
   """use this function to insert picture 
    link @current directory/diagram/xxx.png"""
    (interactive)
-   (setq micro-file-name (read-string "ÊäÈëÎÄ¼şÃû×Ö£º£º")) 
+   (setq micro-file-name (read-string "è¾“å…¥æ–‡ä»¶åå­—ï¼šï¼š")) 
    (insert (concat "[[" default-directory "diagram/" micro-file-name "]]")))
 (global-set-key (kbd "C-c p") 'micro-org-insert-picture)
 
