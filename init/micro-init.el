@@ -14,7 +14,7 @@
        
        (setq micro-theme-path (concat micro-config-root-path "themes\\")))
     (progn 
-        (defvar micro-config-root-path  "~/V-github/emacs-resources/trunk/init/")
+        (defvar micro-config-root-path  "~/v-github/emacs-resources/trunk/init/")
 
         (setq micro-plugin-path (concat micro-config-root-path "plugin/"))
         
