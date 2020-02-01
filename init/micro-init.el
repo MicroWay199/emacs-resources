@@ -8,7 +8,7 @@
 
        (setq micro-plugin-path (concat micro-config-root-path "plugin\\"))
        
-       (setq micro-config-path (concat micfo-config-root-path "micro-config\\"))
+       (setq micro-config-path (concat micro-config-root-path "micro-config\\"))
        
        (setq micro-run-path (concat micro-config-root-path "run-command\\"))
        
