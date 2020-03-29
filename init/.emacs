@@ -24,7 +24,7 @@
              (require 'micro-init)))
     (add-hook 'after-init-hook 
           (lambda ()
-             (add-to-list 'load-path "~/v-github/emacs-resources/trunk/init/")
+             (add-to-list 'load-path "~/v-github/emacs-resources/init/")
              (require 'micro-init))))
 
 
