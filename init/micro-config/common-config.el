@@ -76,5 +76,16 @@
 (show-paren-mode t)  
 (setq show-paren-style 'parenthesis)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;设置常用公共函数
+(defun micro-common-tooltik-dir-set()
+  (if (eq system-type `windows-nt)
+      (add-to-list 'load-path 
+         (concat micro-plugin-path "v-tooltik\\"))
+      (add-to-list 'load-path 
+         (concat micro-plugin-path "v-tooltik/"))))
+(micro-common-tooltik-dir-set)
+(require 'v-common-tooltik)
+
 (provide 'common-config)
 

@@ -83,8 +83,6 @@
 ;;(add-hook 'org-mode-hook 
 ;;          (load (concat micro-config-path "deft-config")))
 
-(require 'personal-config)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;auto run command ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'perl-mode (load (concat micro-run-path "run-perl")))

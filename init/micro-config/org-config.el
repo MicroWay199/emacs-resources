@@ -78,71 +78,16 @@
         ("DONE---" . "green")
         ("ABORT--" . "gray")))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;add for org-mode 快速插入图片
-(defun micro-org-insert-picture ()
-  """use this function to insert picture 
-   link @current directory/diagram/xxx.png"""
-   (interactive)
-   (setq micro-file-name (read-string "输入文件名字：：")) 
-   (insert (concat "[[" default-directory "diagram/" micro-file-name "]]")))
-(global-set-key (kbd "C-c p") 'micro-org-insert-picture)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;org do screenshots and insert to org files
-;;; https://emacs-china.org/t/org-mode/79
-(defun my-org-screenshot ()
-  "Take a screenshot into a time stamped unique-named file in the
-same directory as the org-buffer and insert a link to this file."
-  (interactive)
-  (org-display-inline-images)
-
-  (setq filename
-        (concat
-         (make-temp-name
-          (concat (file-name-directory (buffer-file-name))
-                  "/imgs/"
-                  (format-time-string "%Y%m%d_%H%M%S_")) ) ".png"))
-  (unless (file-exists-p (file-name-directory filename))
-    (make-directory (file-name-directory filename))) ; take screenshot
-
-  (if (eq system-type 'darwin)
-      (progn
-        (call-process-shell-command "screencapture" nil nil nil nil " -s " (concat
-                                                                            "\"" filename "\"" ))
-        (call-process-shell-command "convert" nil nil nil nil (concat "\"" filename "\" -resize  \"50%\"" ) (concat "\"" filename "\"" ))
-        ))
-
-  (setq relative-dir (concat "./imgs/" (file-name-nondirectory filename)))
-  (if (file-exists-p filename)
-      (insert (concat "[[file:" relative-dir "]]")))
-  (org-display-inline-images)
-  )
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;org drag picture to org files and 
-;;insert picture path to org files
-;; drag file to org mode
-;; http://kitchingroup.cheme.cmu.edu/blog/2015/07/10/Drag-images-and-files-onto-org-mode-and-insert-a-link-to-them/
-(defun my-dnd-func (event)
-  (interactive "e")
-  (goto-char (nth 1 (event-start event)))
-  (x-focus-frame nil)
-  (let* ((payload (car (last event)))
-         (type (car payload))
-         (fname (cadr payload))
-         (img-regexp "\\(png\\|jp[e]?g\\|svg\\)\\>"))
-    (cond
-     ;; insert image link
-     ((and  (eq 'drag-n-drop (car event))
-            (eq 'file type)
-            (string-match img-regexp fname))
-      (dired-copy-file fname (format "./imgs/%s" (file-name-nondirectory fname)) t)
-      (insert "#+ATTR_HTML: :width 100%\n")
-      (insert (format "[[%s]]" (format "./imgs/%s" (file-name-nondirectory fname))))
-      (org-display-inline-images t t))
-     ;; regular drag and drop on file
-     (t
-      (error "I am not equipped for dnd on %s" payload)))))
+;;;;设置常用公共函数
+(defun micro-org-tooltik-dir-set()
+  (if (eq system-type `windows-nt)
+      (add-to-list 'load-path 
+         (concat micro-plugin-path "v-tooltik\\"))
+      (add-to-list 'load-path 
+         (concat micro-plugin-path "v-tooltik/"))))
+(micro-org-tooltik-dir-set)
+(require 'v-org-tooltik)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;org setting end here
