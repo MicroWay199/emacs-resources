@@ -52,10 +52,14 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;设置主题
+(add-to-list 'load-path 
+             (concat micro-theme-path "//themes//"))
+(add-to-list 'load-path micro-theme-path)
+(add-to-list 'custom-theme-load-path micro-theme-path)
 (add-to-list 'custom-theme-load-path 
-             micro-theme-path)
-;;(load-theme 'solarized-[light|dark] t))
-(load-theme 'molokai t)
+             (concat micro-theme-path "//themes//"))
+;(load-theme 'solarized-[light|dark] t))
+(load-theme 'doom-monokai-pro t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;设置中英文字体，使中英文字体都舒服的显示
