@@ -53,7 +53,8 @@
          (shell-command (concat v-snip-exe-path " snip -o \"" v-org-file-path "\"")) ;;命令和参数使用/区分开才能正确执行
          (insert "#+CAPTATION: <typing in>  \n")
          (insert "#+LABEL:  \n")
-         (insert "#+ATTR_HTML: :TITLE <typing in> :WIDTH 500  \n") 
+       ;;(insert "#+ATTR_HTML: :TITLE <typing in> :WIDTH 500  \n") 
+         (insert "#+ATTR_HTML: :TITLE <typing in> :WIDTH   \n") ;; 使用原图片尺寸
          (insert (concat "[[./" capture-imag-dir capture-name "]]"))
          (org-display-inline-images)
 	 )))

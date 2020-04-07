@@ -9,7 +9,7 @@
         "~/note-gtd-ebook/org-gtd/")))
 (micro-org-capture-dir-set)
 
-(defun open-todo-list()
+(defun v-open-todo-list()
   """open todo file and agenda mode"""
   (interactive)
   (find-file (concat micro-org-capture-path "todo.org")
