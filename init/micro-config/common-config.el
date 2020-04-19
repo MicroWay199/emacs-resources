@@ -69,10 +69,12 @@
  (defun micro-set-font()
    (if (eq system-type `windows-nt)
        (progn
-	 (set-frame-font "Consolas-12")
+	;;(set-frame-font "Consolas-12")
+	 (set-frame-font "Consolas-14")
          (set-fontset-font "fontset-default"  
                   'gb18030' ("¿¬Ìå" . "unicode-bmp")))
-       (set-frame-font "UbuntuMonoRegular-12")))
+     ;;(set-frame-font "UbuntuMonoRegular-12")))
+       (set-frame-font "UbuntuMonoRegular-14")))
  (micro-set-font)
 
 

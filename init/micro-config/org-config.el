@@ -103,11 +103,12 @@
 (defun v-org-gtd-box()
   (interactive)
   (goto-char (line-beginning-position))
-  (insert "** IMDO[/]\n")
-  (insert "** TODO[/]\n")
-  (insert "** DO-BIG[/]\n")
-  (insert "** WAIT[/]\n")
-  (insert "** CONCELED[/]\n"))
+  (insert "** Im-Do[/]\n")
+  (insert "** Scheduled-Todo[/]\n")
+  (insert "** Scheduled-Long[/]\n")
+  (insert "** Wait[/]\n")
+  (insert "** Inbox[/]\n")
+  (insert "** Conceled[/]\n"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;设置常用公共函数
