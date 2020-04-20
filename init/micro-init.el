@@ -6,23 +6,19 @@
     (progn ;;; if windows 
        (defvar micro-config-root-path "C:\\tools\\emacs\\init\\")
 
+       (setq micro-snippets-path (concat micro-config-root-path "snippets\\"))
        (setq micro-plugin-path (concat micro-config-root-path "plugin\\"))
-       
        (setq micro-config-path (concat micro-config-root-path "micro-config\\"))
-       
        (setq micro-run-path (concat micro-config-root-path "run-command\\"))
-       
        (setq micro-theme-path (concat micro-config-root-path "themes\\")))
     (progn 
         (defvar micro-config-root-path  "~/v-github/emacs-resources/init/")
 
+        (setq micro-snippets-path (concat micro-config-root-path "snippets/"))
         (setq micro-plugin-path (concat micro-config-root-path "plugin/"))
-        
-        (defvar micro-config-path (concat micro-config-root-path "micro-config/"))
-
-        (defvar micro-run-path (concat micro-config-root-path "run-command/"))
-        
-        (defvar micro-theme-path (concat micro-config-root-path "themes/")))))
+        (setq micro-config-path (concat micro-config-root-path "micro-config/"))
+        (setq micro-run-path (concat micro-config-root-path "run-command/"))
+        (setq micro-theme-path (concat micro-config-root-path "themes/")))))
 
 (micro-system-chk)
 
@@ -58,16 +54,20 @@
 
 (add-hook 'emacs-startup-hook 
           (load (concat micro-config-path "org-capture-config")))
+(add-hook 'emacs-startup-hook 
+                 (load (concat micro-config-path "company-mode-config")))
+(add-hook 'emacs-startup-hook 
+                 (load (concat micro-config-path "yasnippet-config")))
 
-(eval-after-load 'c-mode 
-                 '(load (concat micro-config-path "auto-complete-config")))
-(eval-after-load 'verilog-mode 
-                 '(load (concat micro-config-path "auto-complete-config")))
-   
-(eval-after-load 'c-mode 
-                 '(load (concat micro-config-path "yasnippet-config")))
-(eval-after-load 'verilog-mode 
-                 '(load (concat micro-config-path "yasnippet-config")))
+;;(eval-after-load 'c-mode 
+;;                 '(load (concat micro-config-path "auto-complete-config")))
+;;(eval-after-load 'verilog-mode 
+;;                 '(load (concat micro-config-path "auto-complete-config")))
+;;   
+;;(eval-after-load 'c-mode 
+;;                 '(load (concat micro-config-path "yasnippet-config")))
+;;(eval-after-load 'verilog-mode 
+;;                 '(load (concat micro-config-path "yasnippet-config")))
 
 (add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
 

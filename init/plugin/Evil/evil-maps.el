@@ -1,9 +1,9 @@
-;;; evil-maps.el --- Default keymaps
+;;; evil-maps.el --- Default keymaps -*- lexical-binding: t -*-
 
 ;; Author: Vegard Øye <vegard_oye at hotmail.com>
 ;; Maintainer: Vegard Øye <vegard_oye at hotmail.com>
 
-;; Version: 1.2.11
+;; Version: 1.14.0
 
 ;;
 ;; This file is NOT part of GNU Emacs.
@@ -29,6 +29,7 @@
 (require 'evil-ex)
 (require 'evil-commands)
 (require 'evil-command-window)
+(require 'evil-common)
 
 ;;; Code:
 
@@ -72,6 +73,7 @@
 (define-key evil-normal-state-map "gU" 'evil-upcase)
 (define-key evil-normal-state-map "gf" 'find-file-at-point)
 (define-key evil-normal-state-map "gF" 'evil-find-file-at-point-with-line)
+(define-key evil-normal-state-map "gx" 'browse-url-at-point)
 (define-key evil-normal-state-map "g?" 'evil-rot13)
 (define-key evil-normal-state-map "g~" 'evil-invert-case)
 (define-key evil-normal-state-map "zo" 'evil-open-fold)
@@ -100,6 +102,10 @@
 (define-key evil-normal-state-map [remap cua-paste-pop] 'evil-paste-pop)
 (define-key evil-normal-state-map [remap yank-pop] 'evil-paste-pop)
 
+(when (featurep 'tab-bar)
+  (define-key evil-normal-state-map "gt" 'tab-bar-switch-to-next-tab)
+  (define-key evil-normal-state-map "gT" 'tab-bar-switch-to-prev-tab))
+
 ;; go to last change
 (define-key evil-normal-state-map "g;" 'goto-last-change)
 (define-key evil-normal-state-map "g," 'goto-last-change-reverse)
@@ -123,6 +129,7 @@
 (define-key evil-window-map "n" 'evil-window-new)
 (define-key evil-window-map "o" 'delete-other-windows)
 (define-key evil-window-map "p" 'evil-window-mru)
+(define-key evil-window-map "q" 'evil-quit)
 (define-key evil-window-map "r" 'evil-window-rotate-downwards)
 (define-key evil-window-map "R" 'evil-window-rotate-upwards)
 (define-key evil-window-map "s" 'evil-window-split)
@@ -206,7 +213,7 @@
 (define-key evil-motion-state-map "g^" 'evil-first-non-blank-of-visual-line)
 (define-key evil-motion-state-map "gm" 'evil-middle-of-visual-line)
 (define-key evil-motion-state-map "g$" 'evil-end-of-visual-line)
-(define-key evil-motion-state-map "g\C-]" 'find-tag)
+(define-key evil-motion-state-map "g\C-]" 'evil-jump-to-tag)
 (define-key evil-motion-state-map "{" 'evil-backward-paragraph)
 (define-key evil-motion-state-map "}" 'evil-forward-paragraph)
 (define-key evil-motion-state-map "#" 'evil-search-word-backward)
@@ -225,6 +232,8 @@
 (define-key evil-motion-state-map "])" 'evil-next-close-paren)
 (define-key evil-motion-state-map "[{" 'evil-previous-open-brace)
 (define-key evil-motion-state-map "]}" 'evil-next-close-brace)
+(define-key evil-motion-state-map "]s" 'evil-next-flyspell-error)
+(define-key evil-motion-state-map "[s" 'evil-prev-flyspell-error)
 (define-key evil-motion-state-map "*" 'evil-search-word-forward)
 (define-key evil-motion-state-map "g*" 'evil-search-unbounded-word-forward)
 (define-key evil-motion-state-map "," 'evil-repeat-find-char-reverse)
@@ -240,7 +249,6 @@
 (define-key evil-motion-state-map (kbd "C-6") 'evil-switch-to-windows-last-buffer)
 (define-key evil-motion-state-map "\C-]" 'evil-jump-to-tag)
 (define-key evil-motion-state-map (kbd "C-b") 'evil-scroll-page-up)
-(define-key evil-motion-state-map (kbd "C-d") 'evil-scroll-down)
 (define-key evil-motion-state-map (kbd "C-e") 'evil-scroll-line-down)
 (define-key evil-motion-state-map (kbd "C-f") 'evil-scroll-page-down)
 (define-key evil-motion-state-map (kbd "C-o") 'evil-jump-backward)
@@ -325,6 +333,9 @@
 (when evil-want-C-u-scroll
   (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up))
 
+(when evil-want-C-d-scroll
+  (define-key evil-motion-state-map (kbd "C-d") 'evil-scroll-down))
+
 ;;; Visual state
 
 (define-key evil-visual-state-map "A" 'evil-append)
@@ -368,6 +379,8 @@
     ,(if evil-want-C-w-delete
          '("\C-w" . evil-delete-backward-word)
        '("\C-w" . evil-window-map))
+    ,@(when evil-want-C-u-delete
+        '(("\C-u" . evil-delete-back-to-indentation)))
     ([mouse-2] . mouse-yank-primary))
   "Evil's bindings for insert state (for
 `evil-insert-state-map'), excluding <delete>, <escape>, and
@@ -390,13 +403,13 @@ included in `evil-insert-state-bindings' by default."
      ((and remove
            (or force
                ;; Only remove if the default binding has not changed
-               (eq (lookup-key evil-insert-state-map (car binding))
+               (eq (evil-lookup-key evil-insert-state-map (car binding))
                    (cdr binding))))
       (define-key evil-insert-state-map (car binding) nil))
      ((and (null remove)
            (or force
                ;; Check to see that nothing is bound here before adding
-               (null (lookup-key evil-insert-state-map (car binding)))))
+               (not (evil-lookup-key evil-insert-state-map (car binding)))))
       (define-key evil-insert-state-map (car binding) (cdr binding))))))
 
 (define-key evil-insert-state-map [delete] 'delete-char)
@@ -447,10 +460,10 @@ included in `evil-insert-state-bindings' by default."
 (evil-ex-define-cmd "co[py]" 'evil-copy)
 (evil-ex-define-cmd "t" "copy")
 (evil-ex-define-cmd "m[ove]" 'evil-move)
-(evil-ex-define-cmd "d[elete]" 'evil-delete)
-(evil-ex-define-cmd "y[ank]" 'evil-yank)
+(evil-ex-define-cmd "d[elete]" 'evil-ex-delete)
+(evil-ex-define-cmd "y[ank]" 'evil-ex-yank)
 (evil-ex-define-cmd "go[to]" 'evil-goto-char)
-(evil-ex-define-cmd "j[oin]" 'evil-join)
+(evil-ex-define-cmd "j[oin]" 'evil-ex-join)
 (evil-ex-define-cmd "le[ft]" 'evil-align-left)
 (evil-ex-define-cmd "ri[ght]" 'evil-align-right)
 (evil-ex-define-cmd "ce[nter]" 'evil-align-center)
@@ -482,6 +495,7 @@ included in `evil-insert-state-bindings' by default."
 (evil-ex-define-cmd "~&" 'evil-ex-repeat-substitute-with-search-and-flags)
 (evil-ex-define-cmd "registers" 'evil-show-registers)
 (evil-ex-define-cmd "marks" 'evil-show-marks)
+(evil-ex-define-cmd "delm[arks]" 'evil-delete-marks)
 (evil-ex-define-cmd "ju[mps]" 'evil-show-jumps)
 (evil-ex-define-cmd "noh[lsearch]" 'evil-ex-nohighlight)
 (evil-ex-define-cmd "f[ile]" 'evil-show-file-info)
@@ -501,8 +515,14 @@ included in `evil-insert-state-bindings' by default."
 (evil-ex-define-cmd "sor[t]" 'evil-ex-sort)
 (evil-ex-define-cmd "res[ize]" 'evil-ex-resize)
 
+(when (featurep 'tab-bar)
+  (evil-ex-define-cmd "tabnew" 'tab-bar-new-tab)
+  (evil-ex-define-cmd "tabn[ext]" 'tab-bar-switch-to-next-tab)
+  (evil-ex-define-cmd "tabp[revious]" 'tab-bar-switch-to-prev-tab))
+
 ;; search command line
 (define-key evil-ex-search-keymap "\d" #'evil-ex-delete-backward-char)
+(define-key evil-ex-search-keymap "\C-f" 'evil-ex-search-command-window)
 (define-key evil-ex-search-keymap "\C-r" 'evil-paste-from-register)
 (define-key evil-ex-search-keymap "\C-n" 'next-history-element)
 (define-key evil-ex-search-keymap "\C-p" 'previous-history-element)
@@ -516,6 +536,7 @@ included in `evil-insert-state-bindings' by default."
 (define-key evil-ex-completion-map "\C-b" 'move-beginning-of-line)
 (define-key evil-ex-completion-map "\C-c" 'abort-recursive-edit)
 (define-key evil-ex-completion-map "\C-d" 'evil-ex-completion)
+(define-key evil-ex-completion-map "\C-f" 'evil-ex-command-window)
 (define-key evil-ex-completion-map "\C-g" 'abort-recursive-edit)
 (define-key evil-ex-completion-map "\C-k" 'evil-insert-digraph)
 (define-key evil-ex-completion-map "\C-l" 'evil-ex-completion)
@@ -538,6 +559,7 @@ included in `evil-insert-state-bindings' by default."
 ;; evil-read-key
 (define-key evil-read-key-map (kbd "ESC") #'keyboard-quit)
 (define-key evil-read-key-map (kbd "C-]") #'keyboard-quit)
+(define-key evil-read-key-map (kbd "C-g") #'keyboard-quit)
 (define-key evil-read-key-map (kbd "C-q") #'evil-read-quoted-char)
 (define-key evil-read-key-map (kbd "C-v") #'evil-read-quoted-char)
 (define-key evil-read-key-map (kbd "C-k") #'evil-read-digraph-char)
