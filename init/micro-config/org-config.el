@@ -1,4 +1,4 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;org-mode setting
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -23,15 +23,9 @@
 ;;:sub-superscript {}
 ;;或是直接用 elisp 来设置全局的属性：
 
-(defun v-org-hdr-add()
-  (interactive)
-  (goto-char (point-min))
-  (open-line 1)
-  (goto-char (point-min))
-  (insert "#+OPTIONS: ^:nil\n")
-  (insert "#+OPTIONS: ^:{}\n")
-  (insert "#+TITLE: <Typing in>\n"))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;转义设置
 (setq org-export-with-sub-superscripts '{}) ;;这样就会用 {} 来转义了。
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -46,6 +40,7 @@
 
 ;;(require 'htmlize)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;org-mode 输出表格的时候显示全部框线
 (setq org-html-table-default-attributes
       '(:border "2"
@@ -82,12 +77,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;TODO 关键字face
-;; (setq org-todo-keyword-faces 
-;;       '(("TODO===" :foreground "red")
-;;         ("ONGO>>>" :foreground "yellow")
-;;         ("DONE---" :foreground "green")
-;;         ("ABORT--" :foreground "gray")))
-
 (setq org-todo-keyword-faces 
       '(
         ("?" . "red")
@@ -98,17 +87,6 @@
         ("DONE---" . "green")
         ("ABORT--" . "gray")))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;插入GTD box
-(defun v-org-gtd-box()
-  (interactive)
-  (goto-char (line-beginning-position))
-  (insert "** Im-Do[/]\n")
-  (insert "** Scheduled-Todo[/]\n")
-  (insert "** Scheduled-Long[/]\n")
-  (insert "** Wait[/]\n")
-  (insert "** Inbox[/]\n")
-  (insert "** Conceled[/]\n"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;设置常用公共函数

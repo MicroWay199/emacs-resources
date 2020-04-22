@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name:week-gtd-box 
+# key:gtd-box
+# --
+
+* Week:${1:week-num} Date:`(format-time-string "%Y-%m-%d")`
+** Im-Do[/]
+** Scheduled-Todo[/]
+** Scheduled-Long[/]
+** Wait[/]
+** Inbox[/]
+** Conceled[/]

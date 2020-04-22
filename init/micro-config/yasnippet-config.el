@@ -43,7 +43,7 @@
 ;;从#-- 以下输入代码片段就好了
 ;;
 ;;Filename:`(file-name-nondirectory buffer-file-name)` 这个有意思了，这个是显示当前buffer的名字的，让emacs帮你自动写。
-;;
-;; 
+;;time:`(format-time-string "%Y-%m-%d,%a")` 利用Elisp直接插入时间 
+;;time:`(current-time-string)` 利用Elisp直接插入时间 
 ;;
 ;;$0 表示片段展开后光标所在的位置
