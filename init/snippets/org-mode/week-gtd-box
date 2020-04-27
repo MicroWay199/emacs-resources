@@ -3,7 +3,7 @@
 # key:gtd-box
 # --
 
-* Week:${1:week-num} Date:<`(format-time-string "%Y-%m-%d")`>
+* Week:: ${1:week-num} Date:: `(org-insert-time-stamp (current-time))`
 ** Im-Do[/]
 ** Scheduled-Todo[/]
 ** Scheduled-Long[/]
