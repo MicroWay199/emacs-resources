@@ -13,7 +13,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;org do screenshots and insert to org files
-
 (defvar v-snip-exe-path "D:\\software\\snipaste\\Snipaste.exe")
 (defvar v-snip-quick-save "D:\\software\\snipaste\\quick-save\\snip-quick-save.png")
 (defun v-org-snip-insert ()
@@ -21,22 +20,16 @@
    directory and insert a link to this file."
   (interactive)
   (lower-frame)
-  (let* ((capture-name (concat
-                       (format-time-string "%Y%m%d%H%M%S") ".png"))
-         (capture-imag-dir (concat
-				"_images_"
-				(concat (file-name-nondirectory buffer-file-name))
-				"/"))
-         (capture-save-path (concat
-			       (file-name-directory buffer-file-name)
-				capture-imag-dir))
+  (let* ((capture-name (concat (format-time-string "%Y%m%d%H%M%S") ".png"))
+         (capture-imag-dir (concat "_images_" (file-name-nondirectory buffer-file-name) "/"))
+         (capture-save-path (concat (file-name-directory buffer-file-name) capture-imag-dir))
          (capture-file (concat capture-save-path capture-name))
          (v-org-file-path (replace-regexp-in-string "/" "\\\\" capture-file)))
 ;;(setq capture-file (concat capture-save-path capture-name))
   (progn (message v-org-file-path)
  ;;;;; comment for version V0.01 snipaste not support filename output command ;;;;;;;;;;;;;
      ;;  (shell-command (concat "del " v-snip-quick-save))
-     ;;  (shell-command (concat v-snip-exe-path " snip -o quick-save")) ;;命令和参数使用/区分开才能正确执行
+     ;;  (shell-command (concat v-snip-exe-path " snip -o quick-save")) ;;命令和参数使�?区分开才能正确执行
      ;;  (unless (file-exists-p  capture-save-path)
      ;;      (make-directory capture-save-path))
      ;; (while (not (file-exists-p v-snip-quick-save))
@@ -50,14 +43,16 @@
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
          (unless (file-exists-p  capture-save-path)
              (make-directory capture-save-path))
-         (shell-command (concat v-snip-exe-path " snip -o \"" v-org-file-path "\"")) ;;命令和参数使用/区分开才能正确执行
+         (shell-command (concat v-snip-exe-path " snip -o \"" v-org-file-path "\"")) ;;命令和参数使�?区分开才能正确执行
          (insert "#+CAPTATION: <typing in>  \n")
          (insert "#+LABEL:  \n")
        ;;(insert "#+ATTR_HTML: :TITLE <typing in> :WIDTH 500  \n") 
-         (insert "#+ATTR_HTML: :TITLE <typing in> :WIDTH   \n") ;; 使用原图片尺寸
+         (insert "#+ATTR_HTML: :TITLE <typing in> :WIDTH   \n") ;; 使用原图片尺�?
          (insert (concat "[[./" capture-imag-dir capture-name "]]"))
          (org-display-inline-images)
 	 )))
+
+
 
 (defun v-org-snip-del ()
   "del org link and its file  "
