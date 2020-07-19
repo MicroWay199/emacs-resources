@@ -86,6 +86,12 @@
         ("ONGO>>>" . "yellow")
         ("DONE---" . "green")
         ("ABORT--" . "gray")))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;TODO 事件优先级设置 A:重要，紧急  B:重要，不紧急  C:不重要，紧急  D:不重要，不紧急
+(setq org-highest-priority ?A)
+(setq org-lowest-priority ?D)
+
+(setq org-default-priority ?B)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
