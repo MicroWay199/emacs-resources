@@ -74,7 +74,8 @@
          (set-fontset-font "fontset-default"  
                   'gb18030' ("¿¬Ìå" . "unicode-bmp")))
      ;;(set-frame-font "UbuntuMonoRegular-12")))
-       (set-frame-font "UbuntuMonoRegular-14")))
+     ;;(set-frame-font "UbuntuMonoRegular-14")
+     ))
  (micro-set-font)
 
 
