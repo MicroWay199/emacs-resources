@@ -15,6 +15,7 @@
   (find-file (concat micro-org-capture-path "todo.org"))
   (org-mode)
   (setq org-agenda-start-with-log-mode t)
+  (setq org-agenda-archives-mode 'tree)
   (setq org-agenda-files (list (concat micro-org-capture-path "todo.org")))
   (org-agenda)
   (org-agenda-day-view))
@@ -22,7 +23,7 @@
 ;;(setq org-agenda-files (file-expand-wildcards (concat micro-org-capture-path "*.org")))
 ;;(setq org-agenda-files (list (file-expand-wildcards (concat micro-org-capture-path "*.org"))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;¨¦¨¨??org-capture
+;;;;;Â¨Â¦Â¨Â¨??org-capture
 (global-set-key (kbd "C-c c") 'org-capture)
 (setq org-capture-templates 
       ;;;;add todo task
@@ -33,6 +34,6 @@
       ;;;;use to collect ideas and brainstorm
         ("b" "Brainstorm" entry 
          (file+datetree (concat micro-org-capture-path "Brainstorm.org"))
-         "* %?\n¨º?¨¨?¨®¨²¡êo %U\n %i\n %a")))
+         "* %?\nÂ¨Âº?Â¨Â¨?Â¨Â®Â¨Â²Â¡Ãªo %U\n %i\n %a")))
 
 (provide 'org-capture-config)
